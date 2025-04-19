@@ -2,7 +2,7 @@ float Update_Animation_Angles[2];
 
 void* Original_Update_Animation_State_Caller;
 
-void __thiscall Redirected_Update_Animation_State(void* Animation_State, float Unknown_Parameter, float Yaw, float Pitch)
+void __thiscall Redirected_Update_Animation_State(void* Animation_State, float Yaw, float Pitch, float Unknown_Parameter)
 {
 	if (*(void**)((unsigned __int32)Animation_State + 96) == *(void**)((unsigned __int32)Client_Module + 7170160))
 	{
