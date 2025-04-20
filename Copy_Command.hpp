@@ -415,7 +415,7 @@ void __thiscall Redirected_Copy_Command(void* Unknown_Parameter, Command_Structu
 			{
 				using Get_Client_Entity_Type = void* (__thiscall*)(void* Entity_List, __int32 Entity_Number);
 
-				void* Entity = Get_Client_Entity_Type((unsigned __int32)Client_Module + 0x10D270)(*(void**)((unsigned __int32)Client_Module + 0x689A60), Entity_Number);
+				void* Entity = Get_Client_Entity_Type((unsigned __int32)Client_Module + 1102448)(*(void**)((unsigned __int32)Client_Module + 6855264), Entity_Number);
 
 				if (Entity != nullptr)
 				{
@@ -503,7 +503,7 @@ void __thiscall Redirected_Copy_Command(void* Unknown_Parameter, Command_Structu
 								{
 									using Get_Weapon_Information_Type = void*(__thiscall*)(void* Weapon);
 
-									void* Weapon_Information = Get_Weapon_Information_Type((unsigned __int32)Client_Module + 561456)(Weapon);
+									void* Weapon_Information = Get_Weapon_Information_Type((unsigned __int32)Client_Module + 2947792)(Weapon);
 
 									if (*(__int32*)((unsigned __int32)Weapon + 9680) != -1)
 									{
