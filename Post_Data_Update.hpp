@@ -8,7 +8,7 @@ void __thiscall Redirected_Post_Data_Update(void* Entity, void* Unknown_Paramete
 
 	float* Origin = (float*)((unsigned __int32)Entity + 1040);
 
-	float* Previous_Origin = (float*)((unsigned __int32)Entity + 824);
+	float* Previous_Origin = (float*)((unsigned __int32)Entity + 872);
 
 	if (*(float*)((unsigned __int32)Entity + 108) != *(float*)((unsigned __int32)Entity + 112))
 	{
