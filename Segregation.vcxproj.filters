@@ -85,9 +85,6 @@
     <ClInclude Include="Check_Jump.hpp">
       <Filter>Header++</Filter>
     </ClInclude>
-    <ClInclude Include="Shutdown.hpp">
-      <Filter>Header++</Filter>
-    </ClInclude>
     <ClInclude Include="Update_Animation_State.hpp">
       <Filter>Header++</Filter>
     </ClInclude>

@@ -24,8 +24,6 @@ void* Engine_Module;
 
 #include "Write_Events.hpp"
 
-#include "Shutdown.hpp"
-
 #include "Post_Data_Update.hpp"
 
 #include "Build_Transformations.hpp"
@@ -184,6 +182,8 @@ __int32 __stdcall DllMain(HMODULE This_Module, unsigned __int32 Call_Reason, voi
 
 				_putws(L"[ + ] Extend Interface");
 				{
+					Byte_Manager::Set_Bytes(0, (void*)((unsigned __int32)Engine_Module + 2750823), 2, 144);
+
 					Implement_Extended_Interface();
 				}
 
@@ -210,8 +210,6 @@ __int32 __stdcall DllMain(HMODULE This_Module, unsigned __int32 Call_Reason, voi
 					Add_Listener_Type((unsigned __int32)Engine_Module + 1966272)((void*)((unsigned __int32)Engine_Module + 7750640), Event_Listener, (char*)"bullet_impact", nullptr);
 
 					Original_Write_Events_Caller = Redirection_Manager::Redirect_Function(0, (void*)((unsigned __int32)Engine_Module + 1973888), (void*)Redirected_Write_Events);
-
-					Original_Shutdown_Caller = Redirection_Manager::Redirect_Function(0, (void*)((unsigned __int32)Engine_Module + 2203904), (void*)Redirected_Shutdown);
 
 					Original_Post_Data_Update_Caller = Redirection_Manager::Redirect_Function(1, (void*)((unsigned __int32)Client_Module + 2228704), (void*)Redirected_Post_Data_Update);
 				}
@@ -253,7 +251,7 @@ __int32 __stdcall DllMain(HMODULE This_Module, unsigned __int32 Call_Reason, voi
 
 					organimdebug = Redirection_Manager::Redirect_Function(1, (void*)((unsigned __int32)GetModuleHandleW(L"server.dll") + 0x174990), (void*)redanimdebug);
 
-					/*void* Animation_Proxy = (void*)((unsigned __int32)Client_Module + 83422148);
+					/*void* Animation_Proxy = (void*)((unsigned __int32)Client_Module + 7157156);
 
 					Traverse_Animation_Proxies_Label:
 					{
@@ -261,7 +259,7 @@ __int32 __stdcall DllMain(HMODULE This_Module, unsigned __int32 Call_Reason, voi
 
 						*(void**)Animation_Proxy = (void*)Redirected_Set_Animation_Layer;
 
-						if (Animation_Proxy != (void*)((unsigned __int32)Client_Module + 83422508))
+						if (Animation_Proxy != (void*)((unsigned __int32)Client_Module + 7157096))
 						{
 							Animation_Proxy = (void*)((unsigned __int32)Animation_Proxy + 60);
 

@@ -104,7 +104,6 @@
     <ClInclude Include="Setup_Bones.hpp" />
     <ClInclude Include="Setup_Move.hpp" />
     <ClInclude Include="Set_Animation_Layer.hpp" />
-    <ClInclude Include="Shutdown.hpp" />
     <ClInclude Include="Update_Animation.hpp" />
     <ClInclude Include="Sounds.hpp" />
     <ClInclude Include="Update_Animation_State.hpp" />
