@@ -191,7 +191,7 @@ __int32 __stdcall DllMain(HMODULE This_Module, unsigned __int32 Call_Reason, voi
 				{
 					Byte_Manager::Set_Bytes(0, (void*)((unsigned __int32)Client_Module + 1808096), 1, 195);
 
-					//Original_Post_Network_Data_Received_Caller = Redirection_Manager::Redirect_Function(0, (void*)((unsigned __int32)Client_Module + 1808192), (void*)Redirected_Post_Network_Data_Received);
+					Original_Post_Network_Data_Received_Caller = Redirection_Manager::Redirect_Function(3, (void*)((unsigned __int32)Client_Module + 1808192), (void*)Redirected_Post_Network_Data_Received);
 
 					void* Event_Listener = (void*)__builtin_malloc(sizeof(void*));
 

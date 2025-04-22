@@ -107,7 +107,7 @@ void Predicton_Copy_Compare(void* Unknown_Parameter_1, void* Unknown_Parameter_2
 
 		static std::unordered_map<void*, __int32> Flat_Offsets;
 
-		Byte_Manager::Copy_Bytes(1, (void*)(*(unsigned __int32*)Client_Module + 7170160 + Compute_Flat_Offset(&Flat_Offsets[Field], Predicton_Copy.Descriptor, Field, 0)), Field->Bytes, (void*)((unsigned __int32)Predicton_Copy.Source + Field->Offset[1]));
+		Byte_Manager::Copy_Bytes(1, (void*)(*(unsigned __int32*)((unsigned __int32)Client_Module + 7170160) + Compute_Flat_Offset(&Flat_Offsets[Field], Predicton_Copy.Descriptor, Field, 0)), Field->Bytes, (void*)((unsigned __int32)Predicton_Copy.Source + Field->Offset[1]));
 	}
 }
 
@@ -119,11 +119,11 @@ void __thiscall Redirected_Post_Network_Data_Received(void* Unknown_Parameter, _
 
 	Commands_Acknowledged = max(0, Commands_Acknowledged);
 
-	void* Prediction_Frame = *(void**)((unsigned __int32)Local_Player + 1080 + (90 - ((Commands_Acknowledged - 1) % 90 + 1) * 90 % -~90) * 4);
+	void* Result = *(void**)((unsigned __int32)Local_Player + 1080 + (90 - ((Commands_Acknowledged - 1) % 90 + 1) * 90 % -~90) * 4);
 
-	if (Prediction_Frame != nullptr)
+	if (Result != nullptr)
 	{
-		Predicton_Copy.Construct(Local_Player, Prediction_Frame, (void*)Predicton_Copy_Compare);
+		Predicton_Copy.Construct(Local_Player, Result, (void*)Predicton_Copy_Compare);
 
 		using Transfer_Data_Type = __int32(__thiscall*)(Prediction_Copy_Structure* Prediction_Copy, void* Unknown_Parameter, __int32 Entity_Number, Prediction_Descriptor_Structure* Descriptor);
 
