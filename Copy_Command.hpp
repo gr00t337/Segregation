@@ -462,12 +462,17 @@ void __thiscall Redirected_Copy_Command(void* Unknown_Parameter, Command_Structu
 			}
 		}
 
-		auto Target_List_Sort_Prepare = [](Target_Structure& X, Target_Structure& Y) -> __int8
+		auto Target_List_Sort = [](Target_Structure& X, Target_Structure& Y) -> __int8
 		{
-			return X.Priority < Y.Priority;
+			if (X.Priority == Y.Priority)
+			{
+				return X.Distance < Y.Distance;
+			}
+
+			return X.Priority > Y.Priority;
 		};
 
-		std::sort(Sorted_Target_List.begin(), Sorted_Target_List.end(), Target_List_Sort_Prepare);
+		std::sort(Sorted_Target_List.begin(), Sorted_Target_List.end(), Target_List_Sort);
 
 		auto Target_List_Sort_Finish = [](Target_Structure& X, Target_Structure& Y) -> __int8
 		{
