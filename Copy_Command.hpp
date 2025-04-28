@@ -474,18 +474,6 @@ void __thiscall Redirected_Copy_Command(void* Unknown_Parameter, Command_Structu
 
 		std::sort(Sorted_Target_List.begin(), Sorted_Target_List.end(), Target_List_Sort);
 
-		auto Target_List_Sort_Finish = [](Target_Structure& X, Target_Structure& Y) -> __int8
-		{
-			if (X.Priority > Y.Priority)
-			{
-				return 1;
-			}
-
-			return X.Distance < Y.Distance;
-		};
-
-		std::sort(Sorted_Target_List.begin(), Sorted_Target_List.end(), Target_List_Sort_Finish);
-
 		__int8 In_Attack = 0;
 
 		if (__builtin_fabsf(Global_Variables->Current_Time - Shot_Time) > 0.5f)
