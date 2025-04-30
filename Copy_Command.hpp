@@ -528,7 +528,7 @@ void __thiscall Redirected_Copy_Command(void* Unknown_Parameter, Command_Structu
 
 															if (Redirected_Setup_Bones((void*)((unsigned __int32)Target->Self + 4), Bones, sizeof(Bones) / sizeof(Bones[0]), 1048320, Global_Variables->Current_Time) == 1)
 															{
-																auto Perform_Trace = [&](float* Eye_Position, float Direction[3]) -> __int8
+																auto Perform_Trace = [&](float* Eye_Position, float* Direction) -> __int8
 																{
 																	struct alignas(16) Ray_Structure
 																	{
