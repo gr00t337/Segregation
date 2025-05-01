@@ -723,7 +723,7 @@ void __thiscall Redirected_Copy_Command(void* Unknown_Parameter, Command_Structu
 																					{
 																						Player_Data->Shots_Fired = (Player_Data->Shots_Fired + 1) % Bruteforce_Angles_Count;
 
-																						Player_Data->Switch_X += (Player_Data->Shots_Fired == 0);
+																						Player_Data->Switch_X += Player_Data->Shots_Fired == 0;
 
 																						Player_Data->Tolerance = Interface_Bruteforce_Tolerance.Get_Integer();
 																					}
