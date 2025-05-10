@@ -4,17 +4,17 @@ void* Original_Update_Animation_Caller;
 
 struct Animation_Layer_Structure
 {
-	__int8 Additional_Bytes_1[32];
+	__int8 Additional_Bytes_1[8];
 
 	float Weight;
 
-	__int8 Additional_Bytes_2[8];
+	__int8 Additional_Bytes_2[12];
 
 	float Cycle;
 
 	void* Owner;
 
-	__int8 Additional_Bytes_3[4];
+	__int8 Additional_Bytes_3[44];
 };
 
 Animation_Layer_Structure Networked_Animation_Layers[15];
