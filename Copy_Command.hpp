@@ -329,12 +329,7 @@ void __thiscall Redirected_Copy_Command(void* Unknown_Parameter, Command_Structu
 
 		__int32 Choked_Commands = *(__int32*)((unsigned __int32)Engine_Module + 5678672);
 
-		if (Choked_Commands == 0)
-		{
-			Update_Animation_Type = 2;
-
-			Byte_Manager::Copy_Bytes(1, *(void**)((unsigned __int32)Local_Player + 9600), sizeof(Networked_Animation_Layers), Networked_Animation_Layers);
-		}
+		Update_Animation_Type = (Choked_Commands == 0) * 2;
 
 		Redirected_Update_Animation(Local_Player);
 
@@ -476,7 +471,7 @@ void __thiscall Redirected_Copy_Command(void* Unknown_Parameter, Command_Structu
 
 		__int8 In_Attack = 0;
 
-		if (__builtin_fabsf(Global_Variables->Current_Time - Shot_Time) > 0.5f)
+		if (__builtin_fabsf(Global_Variables->Time - Shot_Time) > 0.5f)
 		{
 			if (Shot_Time == 0.f)
 			{
@@ -486,7 +481,7 @@ void __thiscall Redirected_Copy_Command(void* Unknown_Parameter, Command_Structu
 					{
 						if (Send_Packet * (Interface_Alternative.Get_Integer() ^ 1) == (Choked_Commands == 0) * 3)
 						{
-							if (*(float*)((unsigned __int32)Local_Player + 10576) <= Global_Variables->Current_Time)
+							if (*(float*)((unsigned __int32)Local_Player + 10576) <= Global_Variables->Time)
 							{
 								using Get_Weapon_Type = void*(__thiscall*)(void* Entity);
 
@@ -502,7 +497,7 @@ void __thiscall Redirected_Copy_Command(void* Unknown_Parameter, Command_Structu
 									{
 										if (*(__int32*)((unsigned __int32)Weapon + 9688) > 0)
 										{
-											if (*(float*)((unsigned __int32)Weapon + 9608) <= Global_Variables->Current_Time)
+											if (*(float*)((unsigned __int32)Weapon + 9608) <= Global_Variables->Time)
 											{
 												size_t Target_Number = 0;
 
@@ -526,7 +521,7 @@ void __thiscall Redirected_Copy_Command(void* Unknown_Parameter, Command_Structu
 
 															float Bones[128][3][4];
 
-															if (Redirected_Setup_Bones((void*)((unsigned __int32)Target->Self + 4), Bones, sizeof(Bones) / sizeof(Bones[0]), 1048320, Global_Variables->Current_Time) == 1)
+															if (Redirected_Setup_Bones((void*)((unsigned __int32)Target->Self + 4), Bones, sizeof(Bones) / sizeof(Bones[0]), 1048320, Global_Variables->Time) == 1)
 															{
 																auto Perform_Trace = [&](float* Eye_Position, float* Direction) -> __int8
 																{
@@ -773,7 +768,7 @@ void __thiscall Redirected_Copy_Command(void* Unknown_Parameter, Command_Structu
 
 													Send_Packet = Interface_Alternative.Get_Integer() * 2;
 
-													Shot_Time = Global_Variables->Current_Time;
+													Shot_Time = Global_Variables->Time;
 												}
 											}
 										}

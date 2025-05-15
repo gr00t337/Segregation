@@ -16,8 +16,6 @@ void* Engine_Module;
 
 #include "Post_Network_Data_Received.hpp"
 
-#pragma comment(lib, "WinMM.Lib")
-
 #include "Sounds.hpp"
 
 #include "Event_Processor.hpp"
@@ -35,8 +33,6 @@ void* Engine_Module;
 #include "Update_Animation_State.hpp"
 
 #include "Compute_Torso_Rotation.hpp"
-
-#include "Set_Animation_Layer.hpp"
 
 #include "Check_Jump.hpp"
 
@@ -63,32 +59,6 @@ void* Engine_Module;
 #include "Draw_Crosshair.hpp"
 
 #include "Precache.hpp"
-
-void* organimdebug;
-
-void __stdcall redanimdebug(bool x)
-{
-	(decltype(&redanimdebug)(organimdebug))(x);
-
-	if (x)
-	{
-		if (Interface_sv_showhitboxes.Get_Integer() != -1)
-		{
-			static void* server = GetModuleHandleW(L"server.dll");
-
-			void* engine = *(void**)((unsigned __int32)server + 0x64805C);
-
-			void* anim = (*(void*(__thiscall**)(void*, int))(*(DWORD*)engine + 80))(engine, Interface_sv_showhitboxes.Get_Integer());
-			anim = *(void**)((unsigned __int32)anim + 0xc);
-			if (!anim)
-				return;
-
-			using DrawServerHitboxes = void(__thiscall*)(void* ent, float dur, bool mono);
-
-			DrawServerHitboxes((unsigned __int32)server + 0xC4EB0)(anim, 0, 0);
-		}
-	}
-}
 
 __int32 __stdcall DllMain(HMODULE This_Module, unsigned __int32 Call_Reason, void* Reserved)
 {
@@ -239,33 +209,11 @@ __int32 __stdcall DllMain(HMODULE This_Module, unsigned __int32 Call_Reason, voi
 					
 					Original_Check_Jump_Caller = Redirection_Manager::Redirect_Function(0, (void*)((unsigned __int32)Client_Module + 1334448), (void*)Redirected_Check_Jump);
 
-					//Byte_Manager::Set_Bytes(0, (void*)((unsigned __int32)Client_Module + 2343376), 1, 195);
-
 					Original_Update_Animation_State_Caller = Redirection_Manager::Redirect_Function(0, (void*)((unsigned __int32)Client_Module + 2355616), (void*)Redirected_Update_Animation_State);
-
-					Byte_Manager::Set_Bytes(0, (void*)((unsigned __int32)Client_Module + 2355727), 23, 144);
 
 					Original_Compute_Torso_Rotation_Caller = Redirection_Manager::Redirect_Function(0, (void*)((unsigned __int32)Client_Module + 2350960), (void*)Redirected_Compute_Torso_Rotation);
 				
 					Byte_Manager::Set_Bytes(0, (void*)((unsigned __int32)Client_Module + 2351193), 1, 139);
-
-					organimdebug = Redirection_Manager::Redirect_Function(1, (void*)((unsigned __int32)GetModuleHandleW(L"server.dll") + 0x174990), (void*)redanimdebug);
-
-					/*void* Animation_Proxy = (void*)((unsigned __int32)Client_Module + 7157156);
-
-					Traverse_Animation_Proxies_Label:
-					{
-						*(void**)((unsigned __int32)Animation_Proxy + 4) = *(void**)Animation_Proxy;
-
-						*(void**)Animation_Proxy = (void*)Redirected_Set_Animation_Layer;
-
-						if (Animation_Proxy != (void*)((unsigned __int32)Client_Module + 7157096))
-						{
-							Animation_Proxy = (void*)((unsigned __int32)Animation_Proxy + 60);
-
-							goto Traverse_Animation_Proxies_Label;
-						}
-					}*/
 				}
 
 				_putws(L"[ + ] Prediction");

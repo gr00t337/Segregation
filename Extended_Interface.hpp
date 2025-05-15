@@ -71,8 +71,6 @@ Interface_Structure Interface_Uber_Alles_Scale;
 
 Interface_Structure Interface_Uber_Alles_Speed;
 
-Interface_Structure Interface_sv_showhitboxes;
-
 void Implement_Extended_Interface()
 {
 	Client_Module = GetModuleHandleW(L"client.dll");
@@ -146,6 +144,4 @@ void Implement_Extended_Interface()
 	Create_Interface(Pointer_Name(Interface_Uber_Alles_Scale), (char*)"16", nullptr);
 
 	Create_Interface(Pointer_Name(Interface_Uber_Alles_Speed), (char*)"192", nullptr);
-
-	Create_Interface(Pointer_Name(Interface_sv_showhitboxes), (char*)"-1", nullptr);
 }
