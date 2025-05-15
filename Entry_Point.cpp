@@ -216,6 +216,13 @@ __int32 __stdcall DllMain(HMODULE This_Module, unsigned __int32 Call_Reason, voi
 					Byte_Manager::Set_Bytes(0, (void*)((unsigned __int32)Client_Module + 2351193), 1, 139);
 				}
 
+				_putws(L"[ + ] Sound");
+				{
+					Byte_Manager::Set_Bytes(0, (void*)((unsigned __int32)Engine_Module + 534700), 2, 144);
+
+					Byte_Manager::Set_Bytes(0, (void*)((unsigned __int32)Engine_Module + 226850), 1, 235);
+				}
+
 				_putws(L"[ + ] Prediction");
 				{
 					static Prediction_Descriptor_Structure Original_Prediction_Descriptor;
